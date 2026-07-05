@@ -1,0 +1,20 @@
+{
+  "name": "persona-chat-backend",
+  "version": "1.0.0",
+  "description": "Express backend for Persona Chat — proxies requests to Groq with persona-based system prompts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.3.0"
+  }
+}
