@@ -2,17 +2,15 @@
 
 A minimal full-stack web app where you can have a real-time conversation with one of two AI personas — **Hitesh Choudhary** or **Piyush Garg** — each with their own personality, vocabulary, and guardrails. Pick a persona, chat with it, and switch anytime. No login. No memory. Just vibes.
 
-> Built with Node.js + Express, React + Vite, and the Groq API (`openai/gpt-oss-120b`).
+> Built with Node.js + Express, React + Vite, and LLM (`openai/gpt-oss-120b`).
 
 ---
 
-## 🚀 Live Demo
 
-Deployed on Vercel: **[your-deployment-url.vercel.app]**
 
 ---
 
-## 📐 How It Works
+##  How It Works
 
 ```
        DEV                                PRODUCTION (Vercel)
@@ -75,7 +73,7 @@ AI-PERSONA/
 
 ---
 
-## ⚙️ Local Setup
+##  Local Setup
 
 ### Prerequisites
 
@@ -134,7 +132,7 @@ Then open **http://localhost:5173** in your browser.
 
 ---
 
-## ☁️ Vercel Deployment
+##  Vercel Deployment
 
 The repo is pre-configured for Vercel. When you connect the GitHub repo to Vercel:
 
@@ -192,7 +190,7 @@ Sends a message and gets a reply in the selected persona's voice.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Tech |
 |---|---|
@@ -206,7 +204,7 @@ Sends a message and gets a reply in the selected persona's voice.
 
 ---
 
-## 🧠 Persona Data Collection and Preparation
+##  Persona Data Collection and Preparation
 
 For this assignment, the goal was to build chatbots that actually feel like Hitesh Choudhary and Piyush Garg, rather than generic AI assistants.
 
@@ -260,7 +258,7 @@ To keep the conversation flowing without breaking character, the context is hand
 
 ---
 
-## 💬 Sample Conversations
+##  Sample Conversations
 
 ### Persona 1: Hitesh Choudhary
 
