@@ -1,0 +1,8 @@
+{
+  "name": "persona-chat-root",
+  "version": "1.0.0",
+  "description": "Root package for Vercel serverless API functions",
+  "dependencies": {
+    "groq-sdk": "^0.9.0"
+  }
+}
