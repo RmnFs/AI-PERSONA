@@ -5,13 +5,14 @@ import MessageBubble from "./MessageBubble";
  * ChatWindow — scrollable message list.
  * Shows an empty-state prompt when there are no messages.
  * Auto-scrolls to the newest message (including typing indicator).
+ * Passes personaId to each bubble so it can show the correct photo.
  */
+const PERSONA_EMOJIS = { piyush: "🧘", hitesh: "⚡" };
+
 export default function ChatWindow({ messages, loading, activePersona, personas }) {
   const bottomRef = useRef(null);
-  const personaName = personas.find((p) => p.id === activePersona)?.name ?? "Assistant";
-
-  const emojis = { persona1: "🧘", persona2: "⚡" };
-  const personaEmoji = emojis[activePersona] ?? "🤖";
+  const personaName  = personas.find((p) => p.id === activePersona)?.name ?? "Assistant";
+  const personaEmoji = PERSONA_EMOJIS[activePersona] ?? "🤖";
 
   // Auto-scroll whenever messages or loading changes
   useEffect(() => {
@@ -36,12 +37,18 @@ export default function ChatWindow({ messages, loading, activePersona, personas 
       ) : (
         <>
           {messages.map((msg, i) => (
-            <MessageBubble key={i} message={msg} personaName={personaName} />
+            <MessageBubble
+              key={i}
+              message={msg}
+              personaName={personaName}
+              personaId={activePersona}
+            />
           ))}
           {loading && (
             <MessageBubble
               message={{ role: "typing", content: "" }}
               personaName={personaName}
+              personaId={activePersona}
             />
           )}
         </>

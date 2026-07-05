@@ -183,17 +183,26 @@ body::before {
 }
 
 .persona-tab .tab-avatar {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   flex-shrink: 0;
+  overflow: hidden;
   background: var(--tab-bg, rgba(255,255,255,0.06));
-  border: 1px solid var(--tab-accent, var(--border));
+  border: 1.5px solid var(--tab-accent, var(--border));
   transition: all var(--transition);
+}
+
+.persona-tab .tab-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .persona-tab.active .tab-avatar {
@@ -342,9 +351,49 @@ body::before {
   align-items: flex-end;
 }
 
+/* Assistant bubbles: photo avatar sits to the left of the bubble body */
 .message-bubble.assistant {
   align-self: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* ── Bubble photo avatar (assistant side) ── */
+.bubble-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-glass-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-bottom: 2px;
+}
+
+.bubble-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.bubble-avatar-fallback {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Bubble body: name label + bubble content */
+.bubble-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .bubble-meta {
@@ -386,7 +435,75 @@ body::before {
   padding: 14px 18px;
 }
 
+/* ── Markdown rendered inside assistant bubbles ────────────────────────────── */
+.bubble-content p {
+  margin: 0 0 8px 0;
+}
+.bubble-content p:last-child { margin-bottom: 0; }
+
+.bubble-content ul,
+.bubble-content ol {
+  margin: 6px 0 8px 0;
+  padding-left: 20px;
+}
+.bubble-content li { margin-bottom: 3px; }
+
+.bubble-content strong { font-weight: 600; color: var(--text-primary); }
+.bubble-content em     { font-style: italic; }
+
+.bubble-content a {
+  color: var(--p1-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bubble-content a:hover { opacity: 0.8; }
+
+.bubble-content code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12.5px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.bubble-content pre {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+.bubble-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.bubble-content h1,
+.bubble-content h2,
+.bubble-content h3 {
+  font-weight: 600;
+  margin: 10px 0 4px 0;
+  color: var(--text-primary);
+}
+.bubble-content h1 { font-size: 15px; }
+.bubble-content h2 { font-size: 14px; }
+.bubble-content h3 { font-size: 13px; }
+
+.bubble-content blockquote {
+  border-left: 3px solid var(--p1-accent);
+  margin: 8px 0;
+  padding: 4px 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 .typing-dots {
+
   display: flex;
   gap: 5px;
   align-items: center;

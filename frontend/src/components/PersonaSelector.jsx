@@ -1,20 +1,22 @@
 /**
  * PersonaSelector — renders one tab per persona.
- * Each tab shows an emoji avatar, the persona's display name, and a role label.
+ * Each tab shows a real photo avatar, the persona's display name, and a role label.
  * The active tab gets a colored glow border; clicking a non-active tab
  * triggers onSwitch(id), which resets the chat in the parent.
  */
-export default function PersonaSelector({ personas, activePersona, onSwitch }) {
-  const meta = {
-    persona1: { emoji: "🧘", role: "Calm Mentor" },
-    persona2: { emoji: "⚡", role: "Creative Sidekick" },
-  };
 
+// Maps persona file-name IDs → photo path + role label
+const PERSONA_META = {
+  piyush: { avatar: "/piyush.png", role: "" },
+  hitesh: { avatar: "/Hitesh.png", role: "" },
+};
+
+export default function PersonaSelector({ personas, activePersona, onSwitch }) {
   return (
     <div className="persona-selector" role="tablist" aria-label="Select a persona">
       {personas.map((p) => {
         const isActive = p.id === activePersona;
-        const m = meta[p.id] ?? { emoji: "🤖", role: "Assistant" };
+        const m = PERSONA_META[p.id] ?? { avatar: null, role: "Assistant" };
         return (
           <button
             key={p.id}
@@ -26,7 +28,11 @@ export default function PersonaSelector({ personas, activePersona, onSwitch }) {
             title={isActive ? `Chatting with ${p.name}` : `Switch to ${p.name}`}
           >
             <div className="tab-avatar" aria-hidden="true">
-              {m.emoji}
+              {m.avatar ? (
+                <img src={m.avatar} alt={p.name} className="tab-avatar-img" />
+              ) : (
+                "🤖"
+              )}
             </div>
             <div className="tab-info">
               <span className="tab-name">{p.name}</span>
